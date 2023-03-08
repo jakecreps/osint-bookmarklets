@@ -1,0 +1,4 @@
+// This will extract emails and source domain from a page, save it as a CSV, and name the CSV the URL of the page.
+
+javascript:(function(){var e=/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g,t=new Set,o=window.location.hostname.match(/[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/),n=document.createElement("a"),urlName=window.location.href.replace(/[^a-zA-Z0-9]/g, '_');document.querySelectorAll("*").forEach(function(n){var r=n.innerHTML.match(e);r&&r.forEach(function(e){t.add([e,o].join(","))})}),t=Array.from(t).join("\n"),t&&((n.href="data:text/csv;charset=utf-8,"+escape(t),n.target="_blank",n.download=urlName+".csv",n.click()))})();
+
